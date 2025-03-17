@@ -23,24 +23,35 @@ export default function CourseLectures({
   ];
 
   return (
-    <div className="container mx-auto p-6">
+    <div
+      className="container mx-auto p-6"
+      role="region"
+      aria-label={`${course.title} 강좌 상세 페이지`}
+    >
       <Link
         href="/courses"
-        className="text-blue-600 hover:underline mb-4 inline-block"
+        className="text-blue-600 hover:underline mb-4 inline-block focus:outline-none focus:ring-2 focus:ring-blue-500 focus:scale-110 hover:scale-110 transition-all"
+        aria-label="강좌 목록으로 돌아가기"
       >
         ← 강좌 목록으로 돌아가기
       </Link>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-6">
-        <h1 className="text-3xl font-bold mb-2">{course.title}</h1>
+      <div className="bg-white p-6 rounded-lg shadow-md mb-6" role="article">
+        <h1 className="text-3xl font-bold mb-2" role="heading" aria-level={1}>
+          {course.title}
+        </h1>
         <p className="text-gray-600 mb-2">강사: {course.instructor}</p>
         <p className="text-gray-700">{course.description}</p>
       </div>
 
-      <h2 className="text-2xl font-semibold mb-4">강의 목록</h2>
-      <div className="space-y-4">
+      <h2 className="text-2xl font-semibold mb-4" role="heading" aria-level={2}>
+        강의 목록
+      </h2>
+      <div className="space-y-4" role="list" aria-label="강의 목록">
         {lectures.map((lecture) => (
-          <LectureItem key={lecture.id} lecture={lecture} courseId={courseId} />
+          <div key={lecture.id} role="listitem">
+            <LectureItem lecture={lecture} courseId={courseId} />
+          </div>
         ))}
       </div>
     </div>

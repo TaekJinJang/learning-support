@@ -24,3 +24,61 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+/* 키보드 사용자를 위한 포커스 표시 스타일 */
+body.using-keyboard :focus {
+  outline: 2px solid #4299e1 !important;
+  outline-offset: 2px !important;
+}
+
+/* 접근성을 위한 스크린 리더용 텍스트 */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* 상호작용 요소에 대한 접근성 개선 스타일 */
+button,
+input,
+select,
+textarea,
+[role="button"],
+a {
+  transition: all 0.2s ease-in-out;
+}
+
+button:hover,
+input:hover,
+select:hover,
+textarea:hover,
+[role="button"]:hover,
+a:hover {
+  transform: scale(1.05);
+}
+
+button:focus,
+input:focus,
+select:focus,
+textarea:focus,
+[role="button"]:focus,
+a:focus {
+  transform: scale(1.05);
+}
+
+/* 고대비 모드를 위한 스타일 */
+@media (forced-colors: active) {
+  button,
+  input,
+  select,
+  textarea,
+  [role="button"],
+  a {
+    forced-color-adjust: none;
+  }
+}
